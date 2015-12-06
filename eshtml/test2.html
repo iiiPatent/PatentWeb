@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>Elasticsearch + Angular Example</title>
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	  <!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script> -->
+	  <script src="./bower_components/angular/angular.js"></script>
+	 <!--  <script src="./bower_components/elasticsearch/elasticsearch.angular.js"></script>
+	  <script src="./bower_components/elasticsearch/elasticsearch.js"></script> -->
+	  <!-- <script src="http://code.angularjs.org/1.2.16/angular.js"></script> -->
+      <!-- <script src="http://rawgit.com/YousefED/ElasticUI/master/examples/demo/lib/elasticsearch.angular.js"></script> -->
+      <script src="http://rawgit.com/YousefED/ElasticUI/master/examples/demo/lib/elastic.js"></script>
+      <script src="http://rawgit.com/YousefED/ElasticUI/master/dist/elasticui.min.js"></script>
+	  <script src="./js/elastic-angular-client.min.js"></script>
+	 
+	  <script src="./js/app.js"></script> 
+	  <script src="./js/controllers.js"></script>
+	  <!-- <script >
+	    angular
+            .module('tutorial', ['elasticui'])
+            .constant('euiHost', 'http://10.120.30.17:9200'); // ACTION: change to cluster address
+	  </script> -->
+</head>
+<!-- boot angular with the ExampleApp module -->
+<!-- <body  ng-app="tutorial" eui-index="'twitter'">  --> <!--  決定search 的 index-->
+<body ng-app="testQQ" ng-controller="SearchCtrl">
+	<div id = "main">
+		
+		<form id = "theForm">
+			<fieldset>
+				<legend>Check List </legend>
+					<div>
+						<label for = "">Task </label>
+						<input type = "text" name = "task" value = "" id = "task" ng-model="queryTerm">
+					</div>
+					<!-- <div>
+						<input type = "submit" value = "Add" id ="submit">
+					</div> -->
+					<button ng-click="search()" class="btn" type="button">Search</button>
+			</fieldset>
+					<div id = "list">
+					
+					<li ng-repeat="doc in results.hits.hits">
+                        {{ doc._source }}
+                    </li>
+					</div>
+		</form>
+				<!-- <h3>Search</h3>
+                <eui-searchbox field="'keyword'"></eui-searchbox> --> <!-- ACTION: change to field to search on -->
+                <!-- <h3>Single select facet</h3>
+                <eui-singleselect field="'氣球'" size="5"></eui-singleselect> 
+                <h3>Multi select facet</h3>
+                <eui-checklist field="'tweet'" size="10"></eui-checklist> 
+                <h3>Results Per Page</h3> -->
+		
+	<!-- 	<select ng-model="indexVM.pageSize">
+                    <option ng-repeat="item in [10, 27, 50, 100]">{{item}}</option> 
+					</select>
+					-->
+        
+		
+		
+		<!-- <ul>
+                    <li ng-repeat="doc in indexVM.results.hits.hits">
+                        {{doc._source | json | limitTo: 500}} 
+                    </li>
+                </ul>
+        <eui-simple-paging></eui-simple-paging> -->
+	</div>
+	
+	<!--   attach the ExampleController to our main content -->
+		<!-- <div ng-controller="ExampleController" class="container">
+		</div>
+
+		
+		<div ng-if="error" class="alert alert-danger" role="alert">{{error.message}}</div>
+
+	
+		<div ng-if="clusterState" class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Cluster State</h3>
+			</div>
+			<div class="panel-body">
+				<pre>{{clusterState | json}}</pre>
+			</div>
+		</div> -->
+		<div id ="BoAnTest">
+					<h1>jQuery + Elasticsearch+test~~~~~</h1>
+					<h4>您的檢索關鍵字為:</h4><h1 id="keyword">{{message}}</h1>
+					<h1>其他關鍵字:</h1><h1 id="otherword"></h1>
+				</div>
+				<div id = "bigWrapper">
+				</div>
+
+  
+</body>
+</html>

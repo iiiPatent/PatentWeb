@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+ 	<head>
+     	<meta charset="UTF-8">
+		<link rel="stylesheet" href="../css/normalize.css">
+		<script src="../js/jquery.js"></script>
+	    <script src="../bower_components/elasticsearch/elasticsearch.js"></script>
+		<script src="http://code.angularjs.org/1.2.16/angular.js"></script>
+        <script src="http://rawgit.com/YousefED/ElasticUI/master/examples/demo/lib/elasticsearch.angular.js"></script>
+        <script src="http://rawgit.com/YousefED/ElasticUI/master/examples/demo/lib/elastic.js"></script>
+        <script src="http://rawgit.com/YousefED/ElasticUI/master/dist/elasticui.min.js"></script>
+    	<script src="../js/ES.js"></script> 
+		<script>
+			angular.module('testQQ',['elasticui'])
+				   .constant('euiHost','http://10.120.30.17:9200'); 
+				// Action : change to cluster address
+		
+		</script>
+		<title>Search</title>
+		<style type="text/css">
+		#SendMsg{
+			cursor:pointer;
+			transition: color 0.2s;
+			text-align:center;
+		}
+		#SendMsg:hover{
+			color:red;
+		}
+		</style>
+		<link rel="icon" href="../img/PatentSearch_icon.png" type="image/gif" sizes="16x16">
+	</head>
+	<body ng-app = "testQQ" eui-index="'twitter'">
+		<div id="WrapperSearch">
+			<header>
+				<div id="logo">
+					<a href="../PatentSearch.html">
+						<img src="../img/PatentSearch_logo.png" height="80"alt="Logo">
+					</a>
+				</div>
+			</header>
+			<section id="PatentSearchBar">
+				<h3>類別定義</h3>
+				<div class="radio">
+					  	<input type="radio" id="All" name="Patentstyle">
+				    	<label for="All">全部資料庫</label>
+
+					   	<input type="radio" id="A" name="Patentstyle">
+				    	<label for="A">A:人類生活需要</label>
+
+				    	<input type="radio" id="B" name="Patentstyle">
+				    	<label for="B">B:作業、運輸</label>
+
+					    <input type="radio" id="C" name="Patentstyle">
+					    <label for="C">C:化學;冶金...等</label>
+
+					    <input type="radio" id="D" name="Patentstyle">
+					    <label for="D">D:紡織;造紙</label>
+
+					    <input type="radio" id="E" name="Patentstyle">
+					    <label for="E">E:固定建築物</label>
+
+					    <input type="radio" id="F" name="Patentstyle">
+					    <label for="F">F:機械工程;造明...等</label>
+
+					    <input type="radio" id="G" name="Patentstyle">
+					    <label for="G">G:物理</label>
+
+					    <input type="radio" id="H" name="Patentstyle">
+					    <label for="H">H:電學</label>
+				</div>
+			</section>
+			<aside  id="PatentSearchText">  <!-- action="http://10.120.30.18:8124/PatentChart.html" -->
+				<form  method="Get" id="theForm">
+				<div>
+					<p>主要關鍵字: <input type="text" name="mainWord" placeholder="ex:輸入您的關鍵字" id="task"/></p>
+  					<p>相關關鍵字: <input type="text" name="relatedWord" placeholder="ex:輸入您的關鍵字" /></p>
+  					<p>剃除關鍵字: <input type="text" name="outWord" placeholder="ex:輸入您的關鍵字" /></p>
+  				<div id="SearchButton">
+						<img src="../img/PatentSearch_button.png" height="75" width="75" alt="">
+				</div>
+				<div id="SearchLink">
+						<button id ="SendMsg" type = "submit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;點此開始搜尋</button>
+				</div>
+				</div>
+				</form>
+			</aside>
+			<footer>
+				<div>
+					<p>Copyright &copy; 2015 <strong id="PatentColor">Patent</strong>Search. All rights reserved.</p>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>
+<!--template.html-->
