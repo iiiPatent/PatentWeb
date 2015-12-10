@@ -43,7 +43,7 @@
 	
 	//定義變數 (後面query會用到的)
 	var client = new elasticsearch.Client({
-	    host: 'http://10.120.30.17:9200',
+	    host: 'http://10.120.26.16:9200',
 	    log: 'trace'
 	});
 	$(function(){    // ready function

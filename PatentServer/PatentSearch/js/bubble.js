@@ -45,7 +45,8 @@ test = function () {
           },
           attr: {dy: "70px"},
           centralClick: function() {
-            alert("Here is more details!!");
+			  alert("funck!!!!");   // 改這裡沒用，請換到central-click;
+             // $('#submit2').click();
           }
         }
       },

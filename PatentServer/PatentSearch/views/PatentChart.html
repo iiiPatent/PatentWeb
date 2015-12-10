@@ -8,22 +8,23 @@
 		<!-- <script src="js/jquery.js"></script> -->
 		<title>PatentChart</title>
 		<style type="text/css">
+		
 		</style>
 		<!-- jQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<!-- Elasticsearch -->
 		<script src="../bower_components/elasticsearch/elasticsearch.js"></script>
-		<script src="../js/ES_Final.js"></script> 
+		<script src="../js/PatentChart.js"></script> 
 		<!-- D3.js -->
 		<!-- <script src="http://phuonghuynh.github.io/js/bower_components/jquery/dist/jquery.min.js"></script> -->
    	    <script src="http://phuonghuynh.github.io/js/bower_components/d3/d3.min.js"></script>
 	    <script src="http://phuonghuynh.github.io/js/bower_components/d3-transform/src/d3-transform.js"></script>
-	    <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/extarray.js"></script>   <!-- // 造成出事!!! -->
+	    <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/extarray.js"></script>  <!--  // 造成出事!!!  -->
 		<script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/misc.js"></script>
 	    <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/micro-observer.js"></script>
 	    <script src="http://phuonghuynh.github.io/js/bower_components/microplugin/src/microplugin.js"></script>
 	    <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/bubble-chart.js"></script>
-	    <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/central-click/central-click.js"></script>
+	    <script src="../js/central-click.js"></script>
 	    <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/lines/lines.js"></script>
 	    <script src="../js/bubble.js"></script>   
 		<link rel="icon" href="../img/PatentSearch_icon.png" type="image/gif" sizes="16x16">
@@ -55,11 +56,11 @@
 				</div>
 				<div class="radio">
 					<h3>檢索方式</h3>
-					  	<input type="radio" id="FChart" name="Chart">
-				    	<label for="FChart">樹狀圖</label>
-
-					   	<input type="radio" id="BChart" name="Chart">
+						<input type="radio" id="BChart" name="Chart"  checked="checked">
 				    	<label for="BChart">泡泡圖</label>
+					
+					  	<input type="radio" id="FChart" name="Chart">
+				    	<label for="FChart">花火圖</label>
 
 				    	<input type="radio" id="LChart" name="Chart">
 				    	<label for="LChart">長條圖</label>
@@ -67,18 +68,27 @@
 			</section>
 			<aside  id="PatentSearchChart">
 				<div>
-					<form   id="theForm"> <!-- method="Get" -->
+					<form  id="theForm"> <!-- method="Get" -->
 					關鍵字: <input type="text" name="fname" placeholder="ex:輸入您的關鍵字" id="task" value="{{message}}"/>
 					<input type = "submit" value = "Add" id ="submit"><br>
-					<a href="http://10.120.30.18:8124/PatentView.html">來，讓我們到下一步</a>
-					<div  id="Chart" class="bubbleChart">	
-					</div>
 					</form>
+					<form method="post" action="http://10.120.30.18:8124/PatentView.html"  id ="submit2">
+					<input type = "hidden" name = "numbers" value="" id="hiddenInput">
+					<input type = "hidden" name = "hiddenkeyword" value="" id="hiddenKeyword" />
+					<!-- <input type = "submit" value = "來，讓我們到下一步"><br> --> <!-- 之後改成點球球 -->
+					</form>
+					<br><br>
+					<div  id="forceLayout" class="forceLayout" style="display:none;">	
+					</div>
+					<div  id="bubbleChart" class="bubbleChart" style="display:block;">	
+					</div>
+					
 				</div>
 				<div id ="BoAnTest">
-					<h1>Angular + Elasticsearch+test~~~~~</h1>
-					<h4>您的檢索關鍵字為:</h4><h1 id="keyword">{{message}}</h1>
-					<h1>其他關鍵字:</h1><h1 id="otherword"></h1>
+					<!-- <h1>Angular + Elasticsearch+test~~~~~</h1> -->
+					<h1>您的檢索關鍵字為:</h1><h3 id="keyword">{{message}}</h3>
+					<h1>其他關鍵字:</h1><h3 id="otherword"></h3>
+					<h1>IDnumbers:</h1><h2 id = "_ids"></h2>
 				</div>
 				<div id = "bigWrapper">
 				</div>
@@ -89,6 +99,8 @@
 				</div>
 			</footer>
 		</div>
+		<!-- <script src='http://d3js.org/d3.v3.min.js'></script> -->
+		<script src="PatentsD3.js"></script>
 	</body>
 </html>
 <!--template.html-->

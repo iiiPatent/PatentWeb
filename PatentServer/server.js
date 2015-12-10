@@ -1,6 +1,7 @@
 // import module
 var http = require("http");
 var express = require("express");
+var bodyParser = require('body-parser');
 var hbs = require("hbs");
 var app = express();
 
@@ -16,7 +17,7 @@ var server = http.createServer(app);
 
 // Set Static Files 
 app.use(express.static("PatentSearch"));
-
+app.use(bodyParser);
 
 
 server.listen(8124,"10.120.30.18",function(){

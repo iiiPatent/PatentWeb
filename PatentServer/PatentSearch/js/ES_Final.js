@@ -2,12 +2,27 @@
 
 $(function(){    
 		$('#theForm').submit(FirstQuery);  // Event Trigger with "Form Submit"
-		
+		// $('#submit').submit(PostAJAX);
 }); 
+
+
+// function PostAJAX(){
+		// var formData = JSON.stringify($('#_ids').text());
+	
+		// $.ajax({
+		  // type: "POST",
+		  // url: "http://10.120.30.18:8124/PatentView.html",
+		  // data: formData,
+		  // success: function(){},
+		  // dataType: "json",
+		  // contentType : "application/json"
+		// });
+	
+// }
 	
 // Connected With ElasticSearch
 var client = new elasticsearch.Client({
-	host: 'http://10.120.30.17:9200',
+	host: '10.120.26.16:9200',
 	log: 'trace'
 });	
 	
@@ -17,6 +32,7 @@ function FirstQuery(){
 	
 	var task = $('#task').val();
 	$('#keyword').text(task);
+	$('#hiddenKeyword').val(task);
 		// var task = document.getElementById('task').value;
 		// document.getElementById('keyword').innerHTML = task;
 		
@@ -46,9 +62,12 @@ function FirstQuery(){
 		
 		// Print OtherWords 
 		$('#otherword').text(GetUnique(otherword));
-			
+		var _ids = GetUnique(numbers);
+		$('#_ids').text(_ids);
+		$('#hiddenInput').val(_ids);
+		alert($('#hiddenInput').val());
 		// Seconde Query
-		SecondQuery(GetUnique(numbers));
+		SecondQuery(_ids);
 	}, function (err) {
 		console.trace(err.message);
 	});	
@@ -73,12 +92,12 @@ function SecondQuery(idNumbers){
 		} 
 
 		$('#bigWrapper').append('<div id= "content"></div>');
-		var QQ = resp.hits.hits;
+		var data = resp.hits.hits;
 		
-		for (var num in QQ){
-			var ids = QQ[num]['_id'];
-			var title = QQ[num]['_source']['title'];
-			var claim = QQ[num]['_source']['claim'];
+		for (var num in data){
+			var ids = data[num]['_id'];
+			var title = data[num]['_source']['title'];
+			var claim = data[num]['_source']['claim'];
 			$('#content').append('<h1>'+ids+'</h1>');
 			$('#content').append('<h2>'+title+'</h2>');
 			$('#content').append('<h6>'+claim+'</h6>');
