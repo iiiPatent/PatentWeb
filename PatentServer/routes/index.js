@@ -6,8 +6,10 @@ module.exports = function(app){
 	 
 	 app.get('/PatentChart.html',function(request,response){
 		var url = '/patent_test/patent_web/PatentServer/PatentSearch/views/PatentChart.html';
+		var test = '/patent_test/patent_web/PatentServer/PatentSearch/views/Patents_test.json';
 		console.log(request.url);
-		console.log(request.query.mainWord);		
+		console.log(request.query.mainWord);	
+		// response.json(JSON.parse(test));
 		response.render(url,{message:request.query.mainWord});
 	 });
 	 

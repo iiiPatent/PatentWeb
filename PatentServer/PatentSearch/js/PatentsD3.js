@@ -1,11 +1,10 @@
-
 var width = 1060,
     height = 580,
 	final_radius=15,
 	ratio = 2,
     root;
 
-var colorlist = ['red','yellow','blue','green','steelblue','black','#f20']
+var colorlist = ['#88bb77','#FFBB66','#5599FF','#55AA00','steelblue','black','#f20'];
 // var color = d3.scale.category20();	
 	
 var force = d3.layout.force()
@@ -21,12 +20,20 @@ var svg = d3.select("#forceLayout").append("svg")
 var link = svg.selectAll(".link"),
     node = svg.selectAll(".node");
 
-d3.json("./Patents_test.json", function(error, json) {
+d3.json("../js/Patents_test.json", function(error, json) {  // 接 Node.js用
   if (error) throw error;
 
   root = json;
   update();
 });
+
+// d3.json("./Patents_test.json", function(error, json) { // 單機用
+  // if (error) throw error;
+
+  // root = json;
+  // update();
+// });
+
 
 function update() {
   var nodes = flatten(root),
@@ -64,6 +71,11 @@ function update() {
   // Show the Data Name
   node.append("title")  
       .text(function(d) { return d.name; });  
+	  
+  node.append("text")
+      .attr("dx", 30)
+      .attr("dy", "1em")
+      .text(function(d) { return d.name; });
 		
   // Exit any old nodes.
   node.exit().remove();

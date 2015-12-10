@@ -46,13 +46,13 @@
 			</section>
 			<aside  id="PatentTable">
 				<div>
-					<form  id="theForm">
-					<input type = "hidden" name = "age" value={{applicationNumbers}} id="hidden_ids">
 					<div id="test">{{applicationNumbers}}</div>
+					<input type = "hidden" name = "age" value={{applicationNumbers}} id="hidden_ids">
+					<!-- <form  id="theForm">
 					關鍵字: <input type="text" name="fname" placeholder="ex:輸入您的關鍵字" id="task" value={{keyword}}/>
 					<input type = "submit" value = "Add" id ="submit"><br>
-					</form>
-					<h4>您的檢索關鍵字為 : <h1 id = "keyword">{{keyword}}</h1></h4>
+					</form> -->
+					<h4>您的檢索關鍵字為 : <span id = "keyword" style="font:normal 28px Tahoma;">{{keyword}}</span></h4>
 					<table border="1" width="950" id="TableView">
 						<!-- <tr>
 						  <td>1</td>
