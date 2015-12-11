@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+ 	<head>
+     	<meta charset="UTF-8">
+		<link rel="stylesheet" href="../css/normalize.css">
+		<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600,200italic,600italic&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+
+		<!-- <script src="js/jquery.js"></script> -->
+		<title>PatentChart</title>
+		<style type="text/css">
+		
+		</style>
+		<!-- jQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<!-- Elasticsearch -->
+		<script src="../bower_components/elasticsearch/elasticsearch.js"></script>
+		<script src="../js/PatentChartOfficalTest.js"></script> 
+		<!-- D3.js --><!--  // 造成出事!!!  -->
+		<script src="http://phuonghuynh.github.io/js/bower_components/d3/d3.min.js"></script>
+		<!-- <script src='http://d3js.org/d3.v3.min.js'></script>
+	    <script src="http://phuonghuynh.github.io/js/bower_components/d3-transform/src/d3-transform.js"></script>
+	    <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/extarray.js"></script>  
+		<script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/misc.js"></script>
+	    <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/micro-observer.js"></script>
+	    <script src="http://phuonghuynh.github.io/js/bower_components/microplugin/src/microplugin.js"></script>
+	    <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/bubble-chart.js"></script>
+	    <script src="../js/central-click.js"></script>
+	    <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/lines/lines.js"></script>
+	    <script src="../js/bubble.js"></script>  -->  
+		<link rel="icon" href="../img/PatentSearch_icon.png" type="image/gif" sizes="16x16">
+	</head>
+	<body>
+		<div id="WrapperSearch">
+			<header>
+				<div id="logo">
+					<a href="../PatentSearch.html">
+						<img src="../img/PatentSearch_logo.png" height="80"alt="Logo">
+					</a>
+				</div>
+			</header>
+			<section id="PatentStyle">
+				<div class="radio">
+					<h3>專利種類</h3>
+					  	<div class="radio">
+					  	<input type="radio" id="AllUPC" name="IpcPatent">
+				    	<label for="AllUPC">所有專利</label>
+
+					   	<input type="radio" id="I" name="IpcPatent">
+				    	<label for="I">發明專利</label>
+
+				    	<input type="radio" id="J" name="IpcPatent">
+				    	<label for="J">新型專利</label>
+
+					    <input type="radio" id="K" name="IpcPatent">
+					    <label for="K">新式樣專利</label>
+				</div>
+				<div class="radio">
+					<h3>檢索方式</h3>
+						<input type="radio" id="BChart" name="Chart"  checked="checked">
+				    	<label for="BChart">泡泡圖</label>
+					
+					  	<input type="radio" id="FChart" name="Chart">
+				    	<label for="FChart">花火圖</label>
+
+				    	<input type="radio" id="LChart" name="Chart">
+				    	<label for="LChart">長條圖</label>
+				</div>
+			</section>
+			<aside  id="PatentSearchChart">
+				<div>
+					<form  id="theForm"> <!-- method="Get" -->
+					關鍵字: <input type="text" name="fname" placeholder="ex:輸入您的關鍵字" id="task" value="{{message}}"/>
+					<input type = "button" value = "Add" id ="submit"><br>
+					</form>
+					<form method="post" action="http://10.120.30.18:8124/PatentView.html"  id ="submit2">
+					<input type = "hidden" name = "numbers" value="" id="hiddenInput">
+					<input type = "hidden" name = "hiddenkeyword" value="" id="hiddenKeyword" />
+					<!-- <input type = "submit" value = "來，讓我們到下一步"><br> --> <!-- 之後改成點球球 -->
+					</form>
+					<br><br>
+					<div  id="forceLayout" class="forceLayout" style="display:block;">	
+					</div>
+					<!-- <div  id="bubbleChart" class="bubbleChart" style="display:block;">	
+					</div> -->
+					
+				</div>
+				<div id ="BoAnTest">
+					<!-- <h1>Angular + Elasticsearch+test~~~~~</h1> -->
+					<h1>您的檢索關鍵字為:</h1><h3 id="keyword">{{message}}</h3>
+					<h1>其他關鍵字:</h1><h3 id="otherword"></h3>
+					<h1>IDnumbers:</h1><h2 id = "_ids"></h2>
+				</div>
+				<div id = "bigWrapper">
+				</div>
+			</aside>
+			<footer>
+				<div>
+					<p>Copyright &copy; 2015 <strong id="PatentColor">Patent</strong>Search. All rights reserved.</p>
+				</div>
+			</footer>
+		</div>
+		 <!-- <script src='http://d3js.org/d3.v3.min.js'></script> -->
+		<script src="../js/PatentsD3Offical.js"></script>
+	</body>
+</html>
+<!--template.html-->

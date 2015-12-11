@@ -12,7 +12,7 @@ var QQ = [
       ]
 
 
-test = function () {
+BubbleChart = function () {
   var bubbleChart = new d3.svg.BubbleChart({
     supportResponsive: true,
     //container: => use @default
@@ -26,8 +26,8 @@ test = function () {
     //intersectInc: use @default
     //circleColor: use @default
     data: {
-      items: QQ,
-      eval: function (item) {return item.count;},
+      items: bubblelist,
+      eval: function (item) {return item["name"];},
       classed: function (item) {return item.text.split(" ").join("");}
     },
     plugins: [
@@ -101,5 +101,5 @@ test = function () {
 }
 
 
-$(document).ready(test);
+// $(document).ready(BubbleChart);
 

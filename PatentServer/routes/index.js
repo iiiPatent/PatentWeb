@@ -9,7 +9,7 @@ module.exports = function(app){
 		var test = '/patent_test/patent_web/PatentServer/PatentSearch/views/Patents_test.json';
 		console.log(request.url);
 		console.log(request.query.mainWord);	
-		// response.json(JSON.parse(test));
+		
 		response.render(url,{message:request.query.mainWord});
 	 });
 	 

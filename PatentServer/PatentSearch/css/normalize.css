@@ -597,7 +597,7 @@ footer {
 }
 .link {
 	fill: none;
-	stroke: steelblue;
+	stroke: #aaa;
 	stroke-width: 1.5px;
 }
 
