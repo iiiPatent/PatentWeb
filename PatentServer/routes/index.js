@@ -4,39 +4,36 @@ module.exports = function(app){
 	 var bodyParser = require('body-parser');
 	 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 	 
-	 app.get('/PatentChart.html',function(request,response){
-		var url = '/patent_test/patent_web/PatentServer/PatentSearch/views/PatentChart.html';
-		var test = '/patent_test/patent_web/PatentServer/PatentSearch/views/Patents_test.json';
+	 app.get('/PatentChart_final.html',function(request,response){
+		var url = '/patent_test/patent_web/PatentServer/PatentSearch/views/PatentChart_final.html';
+		
 		console.log(request.url);
 		console.log(request.query.mainWord);	
 		
 		response.render(url,{message:request.query.mainWord});
 	 });
 	 
-	 app.get('/Search.html',function(request,response){
-		var url = '/patent_test/patent_web/PatentServer/PatentSearch/views/Search.html';
+	 app.get('/Search_final.html',function(request,response){
+		var url = '/patent_test/patent_web/PatentServer/PatentSearch/views/Search_final.html';
 		response.sendFile(url);
-		//response.redirect("/Search.html");
-		//response.send({name:"QQ",age:"fuck u heap size!!!!"});
+
 	 });
 	 
 
-	app.post('/PatentView.html/', urlencodedParser,function(request,response){
-		// post data & ES+redirect 跳轉到P4 
+	app.post('/PatentView_final.html/', urlencodedParser,function(request,response){
 		
-		var url = '/patent_test/patent_web/PatentServer/PatentSearch/views/PatentView.html';
-		//var QQ = {name:"QQAAAAAA",age:"Fuck U heap size!!!"};
+		var url = '/patent_test/patent_web/PatentServer/PatentSearch/views/PatentView_final.html';
+	
 		var json = JSON.stringify(request.body.numbers);   // 包成json
  
 		response.render(url,{applicationNumbers:json,keyword:request.body.hiddenkeyword});
-		// response.json();
-		// response.end();
+
 	}); 
 
 
 	// Entrance
 	app.get('/',function(request,response){
-		response.sendFile('/patent_test/patent_web/PatentServer/PatentSearch/views/PatentSearch.html');
+		response.sendFile('/patent_test/patent_web/PatentServer/PatentSearch/views/PatentMagnifier.html');
 		count +=1 ; 
 		console.log("QQ"+count);
 	});

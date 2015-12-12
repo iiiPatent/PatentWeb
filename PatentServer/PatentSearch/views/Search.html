@@ -3,12 +3,24 @@
  	<head>
      	<meta charset="UTF-8">
 		<link rel="stylesheet" href="../css/normalize.css">
-		<script src="../js/jquery.js"></script>
+		
+		<!-- AngularJS CDN -->
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.js"></script>  
-	    <!-- <script src="../bower_components/elasticsearch/elasticsearch.js"></script> -->
-    	<script src="../js/elasticsearch.angular.min.js"></script>
-		<!-- <script src="es_connect.js"></script> -->
+	    <script src="http://code.highcharts.com/adapters/standalone-framework.js"></script>
+		
+		<!-- jQuery CDN -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		
+		<!-- HighChart CDN-->
+		<script src="http://code.highcharts.com/highcharts.src.js"></script>
+		<script src="../js/highcharts-ng.js"></script> <!-- 讀不到一哥 -->
+
+		<!-- ElasticSearch -->
+		<script src="../js/elasticsearch.angular.min.js"></script>
+
+		<!-- Ours.js -->
 		<script src="../js/Search.js"></script> 
+	
 		<title>Search</title>
 		<style type="text/css">
 		#SendMsg{
@@ -65,30 +77,61 @@
 					    <label for="H">H:電學</label>
 				</div>
 			</section>
-			<aside  id="PatentSearchText"  ng-app="EsConnector"  ng-controller="QueryController" > 
-				<form action="http://10.120.30.18:8124/PatentChart.html"  method="Get" id="theForm">
-				<div >
-					<p>主要關鍵字: <input ng-model="name" type="text" name="mainWord" placeholder="ex:輸入您的關鍵字" id="mainWord" /></p>
-  					<p>相關關鍵字: <!-- <input type="text" name="relatedWord" placeholder="ex:輸入您的關鍵字" id = "relatedWord" > -->
-					
-					<!-- {{items['_source']['keyword']}} -->
-					<!-- <label ng-repeat="test in items['_source']['keyword']" style="text-align:center;margin-left:100px;">{{test}} </label> -->
-					</p>
-					<h2 ng-repeat="items in words" id="Words">{{items}}</h2>
-  					<!-- <p>剃除關鍵字: <input type="text" name="outWord" placeholder="ex:輸入您的關鍵字" /></p> -->
-  				<div id="SearchButton">
-						<img src="../img/PatentSearch_button.png" height="75" width="75" alt="">
+			<!-- <div ng-app="myapp">
+				<div ng-controller="myctrl">
+					<div class="span12">
+						<input ng-model="chartConfig.title.text">
+						<button ng-click="addSeries()">Add Series</button>
+						<button ng-click="addPoints()">Add Points to Random Series</button>
+						<button ng-click="removeRandomSeries()">Remove Random Series</button>
+						<button ng-click="swapChartType()">Line/Bar</button>
+						<button ng-click="toggleLoading()">Loading?</button>
+					</div>
+					<div class="row">
+						<highchart id="chart1" config="chartConfig" class="span10"></highchart>
+					</div>
 				</div>
-				<div id="SearchLink">
-						<button id ="SendMsg" type = "submit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;點此開始搜尋</button>
+			</div> -->
+			
+			
+			<aside  id="PatentSearchText"  ng-app="EsConnector"  style = "margin-top:400px;"> 
+				<div ng-controller="HighChartController">
+					<div class="span12">
+						<input ng-model="chartConfig.title.text">
+						<button ng-click="addSeries()">Add Series</button>
+						<button ng-click="addPoints()">Add Points to Random Series</button>
+						<button ng-click="removeRandomSeries()">Remove Random Series</button>
+						<button ng-click="swapChartType()">Line/Bar</button>
+						<button ng-click="toggleLoading()">Loading?</button>
+					</div>
+					<div class="row">
+						<highchart id="chart1" config="chartConfig" class="span10"></highchart>
+					</div>
 				</div>
+				
+				<div  ng-controller="QueryController">		
+					<form action="http://10.120.30.18:8124/PatentChartOffical.html"  method="Get" id="theForm">
+					<div >
+						<p>主要關鍵字: <input ng-model="name" type="text" name="mainWord" placeholder="ex:輸入您的關鍵字" id="mainWord" /></p>
+						<p>相關關鍵字: 
+						</p>
+						<span ng-repeat="items in words" id="Words">{{items}},</span>
+						
+					<div id="SearchButton">
+							<img src="../img/PatentSearch_button.png" height="75" width="75" alt="">
+					</div>
+					<div id="SearchLink">
+							<button id ="SendMsg" type = "submit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;點此開始搜尋</button>
+					</div>
+					</div>
+					</form>
 				</div>
-				</form>
 				<!-- 
 				<form id = "testSearch">
 					<p><input type ="submit" value="Form & Input 真好用QQ "></p>
 				</form> -->
 			</aside>
+			
 			<footer>
 				<div>
 					<p>Copyright &copy; 2015 <strong id="PatentColor">Patent</strong>Search. All rights reserved.</p>

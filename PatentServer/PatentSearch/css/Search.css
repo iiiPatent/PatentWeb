@@ -1,0 +1,105 @@
+/**Search.html start here**/
+*{
+  max-width:100%;
+  max-height:100%;
+  cursor:url(../img/PatentSearchB_icon.png),auto;
+  font-family: 微軟正黑體;
+}
+body{
+  background-color: #EEEEEF;
+  overflow-y:hidden;
+　overflow-x: hidden;
+  background-attachment: fixed;
+  background-image: url("../img/background.png");
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+#wrapper{
+  position: relative;
+  text-align: center;
+}
+#logo{
+  text-align: center;
+  padding: 20px 0;
+  position:relative;
+  left:-2.5%;
+}
+.bubbleChart {
+  min-width: 100px;
+  max-width: 700px;
+  height: 700px;
+  margin: 0 auto;
+}
+.bubbleChart svg{
+  background: #EEEEEF;
+}
+#PatentSearchText{
+  text-align: center;
+  margin: 0 auto;
+  width:100%;
+  position: relative;
+  display: inline-block;
+  font-size: 1.7em;
+  font-weight: bold;
+  line-height: 1.5em;
+  letter-spacing: 0.4em;
+  color:#40210F;
+}
+#inputsearch{
+  width:60%;
+  margin: 0 auto;
+  text-align: left;
+}
+#mainWord input[type="text"]{
+  background-color: #ccc;
+  cursor: pointer;
+  margin: 5px;
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-family: 微軟正黑體;
+  letter-spacing: 0.1em;
+}
+#Svgdisplay{
+  display:inline-block;
+  width:80%;
+  height:450px;
+  background: #fff;
+  margin: 0 0 20px 0;
+  opacity: 0;
+}
+#SendMsg{
+  border-style:none;
+  display: inline-block;
+  position: fixed;
+  top:83%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  background: url(../img/PatentSearchB.png);
+  margin: auto 0;
+}
+#SendMsg:hover{
+  width: 80px;
+  height: 80px;
+  background: url(../img/PatentSearchBF.png);
+  background-repeat: no-repeat;
+}
+#Words{
+  text-align: center;
+  font:bold 20px Tahoma;
+}
+#PatentColor{
+  color:#4D9CD0;
+}
+footer {
+  text-align: center;
+  display: inline-block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height:50px;
+  letter-spacing: 0.2em;
+  background: #EEEEEF;
+  zindex:99;
+}

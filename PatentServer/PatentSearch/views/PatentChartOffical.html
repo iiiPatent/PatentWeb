@@ -14,10 +14,9 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<!-- Elasticsearch -->
 		<script src="../bower_components/elasticsearch/elasticsearch.js"></script>
-		<script src="../js/PatentChartOfficalTest.js"></script> 
-		<!-- D3.js --><!--  // 造成出事!!!  -->
-		<script src="http://phuonghuynh.github.io/js/bower_components/d3/d3.min.js"></script>
-		<!-- <script src='http://d3js.org/d3.v3.min.js'></script>
+		<script src="../js/PatentChartOffical.js"></script> 
+		<!-- D3.js --><!--  // 造成出事!!!  --> 
+		<script src="http://phuonghuynh.github.io/js/bower_components/d3/d3.min.js"></script> 	
 	    <script src="http://phuonghuynh.github.io/js/bower_components/d3-transform/src/d3-transform.js"></script>
 	    <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/extarray.js"></script>  
 		<script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/misc.js"></script>
@@ -26,7 +25,7 @@
 	    <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/bubble-chart.js"></script>
 	    <script src="../js/central-click.js"></script>
 	    <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/lines/lines.js"></script>
-	    <script src="../js/bubble.js"></script>  -->  
+	    <script src="../js/bubbleOffical.js"></script>  <!-- bubble.js放此 -->
 		<link rel="icon" href="../img/PatentSearch_icon.png" type="image/gif" sizes="16x16">
 	</head>
 	<body>
@@ -56,10 +55,10 @@
 				</div>
 				<div class="radio">
 					<h3>檢索方式</h3>
-						<input type="radio" id="BChart" name="Chart"  checked="checked">
+						<input type="radio" id="BChart" name="Chart"  >
 				    	<label for="BChart">泡泡圖</label>
 					
-					  	<input type="radio" id="FChart" name="Chart">
+					  	<input type="radio" id="FChart" name="Chart" checked="checked">
 				    	<label for="FChart">花火圖</label>
 
 				    	<input type="radio" id="LChart" name="Chart">
@@ -68,20 +67,20 @@
 			</section>
 			<aside  id="PatentSearchChart">
 				<div>
-					<form  id="theForm"> <!-- method="Get" -->
+					<form  id="theForm" action=""> <!-- method="Get" -->
 					關鍵字: <input type="text" name="fname" placeholder="ex:輸入您的關鍵字" id="task" value="{{message}}"/>
 					<input type = "button" value = "Add" id ="submit"><br>
 					</form>
 					<form method="post" action="http://10.120.30.18:8124/PatentView.html"  id ="submit2">
-					<input type = "hidden" name = "numbers" value="" id="hiddenInput">
+					<input type = "hidden" name = "numbers" value="" id="hiddenNum">
 					<input type = "hidden" name = "hiddenkeyword" value="" id="hiddenKeyword" />
 					<!-- <input type = "submit" value = "來，讓我們到下一步"><br> --> <!-- 之後改成點球球 -->
 					</form>
 					<br><br>
 					<div  id="forceLayout" class="forceLayout" style="display:block;">	
 					</div>
-					<!-- <div  id="bubbleChart" class="bubbleChart" style="display:block;">	
-					</div> -->
+					<div  id="bubbleChart" class="bubbleChart" style="display:none;">	
+					</div>
 					
 				</div>
 				<div id ="BoAnTest">
@@ -99,8 +98,11 @@
 				</div>
 			</footer>
 		</div>
+		
 		 <!-- <script src='http://d3js.org/d3.v3.min.js'></script> -->
+		   <!-- ForceLayout.js放此 -->
 		<script src="../js/PatentsD3Offical.js"></script>
+		
 	</body>
 </html>
 <!--template.html-->

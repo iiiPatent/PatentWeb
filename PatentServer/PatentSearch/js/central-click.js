@@ -7,7 +7,18 @@ d3.svg.BubbleChart.define("central-click", function (options) {
       var fn = original.apply(this, arguments);
       self.event.on("click", function(node) {
         if (node.selectAll("text.central-click")[0].length === 1) {
-           $('#submit2').submit();
+			alert(node);
+			// var group = d.group;
+			// var _ids;
+			// for (var num = 0 ; num < hits.length ;num++){
+				// if (hits[num]['_source']['group'] == group){
+					// _ids = hits[num]['_source']['id'];
+					// break;					
+				// } 
+			// }
+
+		// $('#hiddenNum').val(_ids); 
+           // $('#submit2').submit();
         }
       });
       return fn;
@@ -34,7 +45,7 @@ d3.svg.BubbleChart.define("central-click", function (options) {
           .style(options.style)
           .attr("x", function (d) {return d.cx;})
           .attr("y", function (d) {return d.cy;})
-          .text(options.text)
+          .text(options.text)  
           .style("opacity", 0).transition().duration(self.getOptions().transitDuration / 2).style("opacity", "0.8");
       });
       return fn;

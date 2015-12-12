@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+ 	<head>
+		<!-- Offcial -->
+     	<meta charset="UTF-8">
+		<link rel="stylesheet" href="../css/normalize.css">
+		<link rel="stylesheet" href="../css/PatentChart.css">
+		<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600,200italic,600italic&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+		<!-- <script src="js/jquery.js"></script> -->
+		<script>
+			$(document).ready(function(){
+			$("input").focus(function(){
+			$("#Svgdisplay").css("opacity","1");
+			});
+			$("input").blur(function(){
+			$("#Svgdisplay").css("opacity","0");
+			});
+			});
+		</script>
+		<!-- jQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<!-- Elasticsearch -->
+		<script src="../bower_components/elasticsearch/elasticsearch.js"></script>
+		<script src="../js/PatentChartOffical.js"></script>
+		<!-- D3.js --><!--  // 造成出事!!!  -->
+		<!-- <script src="http://phuonghuynh.github.io/js/bower_components/d3/d3.min.js"></script> -->
+		<script src='http://d3js.org/d3.v3.min.js'></script>
+	    <script src="http://phuonghuynh.github.io/js/bower_components/d3-transform/src/d3-transform.js"></script>
+	    <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/extarray.js"></script>
+		<script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/misc.js"></script>
+	    <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/micro-observer.js"></script>
+	    <script src="http://phuonghuynh.github.io/js/bower_components/microplugin/src/microplugin.js"></script>
+	    <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/bubble-chart.js"></script>
+	    <script src="../js/central-click.js"></script>
+	    <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/lines/lines.js"></script>
+	    <script src="../js/bubbleOffical.js"></script> 
+		<title>專利放大鏡|MAGNIFIER</title>
+		<link rel="icon" href="../img/PatentSearchB_icon.png" type="image/gif" sizes="16x16">
+	</head>
+	<body>
+	
+		<div id="Wrapper">
+			<header>
+				<div id="logo">
+					<a href="../views/PatentMagnifier.html">
+						<img src="../img/PatentSearch_logoB.png" width="501" height="121"alt="Logo">
+					</a>
+				</div>
+			</header>
+			<!-- 泡泡圖按不到 -->
+			<section  id="PatentSearchChart">
+				<div>
+					<form  id="theForm"> <!-- method="Get"  <script src="../js/PatentsD3Offical.js"></script> -->
+					<span id="theFormkey">關鍵字:</span><input type="text"  name="fname" placeholder="ex:輸入您的關鍵字" id="task" value="{{message}}"/>
+					<input type = "submit" value = "修改關鍵字" id ="submit"><br>
+					</form>
+					<form method="post" action="http://10.120.30.18:8124/PatentView_final.html"  id ="submit_final">
+					<input type = "hidden" name = "numbers" value="" id="hiddenInput">
+					<input type = "hidden" name = "hiddenkeyword" value="" id="hiddenKeyword" />
+					</form>
+				</div>
+				<div id="Charts">
+					<div  id="bubbleChart" class="bubbleChart" style="display:none;">
+					</div>
+					<div  id="forceLayout" class="forceLayout" style="display:block;">
+					</div>
+				</div>
+			</section>
+			<section id="PatentStyle">
+				<div class="radio">
+				<h1>檢索方式</h1>
+					<input type="radio" id="FChart" name="Chart" checked="checked">
+				    <label for="FChart">花火圖</label>
+
+					<input type="radio" id="BChart" name="Chart">
+				    <label for="BChart">泡泡圖</label>
+				</div>
+			</section>
+			<div id ="keyprompt">
+					<span>您的檢索關鍵字為:<span id="keyword">{{message}}</span></span><br>
+					<span>其他關鍵字:<span id="otherword"></span></span><br>
+					<span>IDnumbers:<span id = "ids"></span></span><br>
+			</div>
+			<footer>
+				<div>
+					<p>Copyright &copy; 2015 <strong id="PatentColor">Patent</strong>MAGNIFIER. All rights reserved.</p>
+				</div>
+			</footer>
+		</div>
+		
+		<script src="../js/PatentsD3_final.js"></script>
+	</body>
+</html>
+<!--template.html-->

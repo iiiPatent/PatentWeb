@@ -10,7 +10,7 @@ $(function(){
 	
 	// var _ids = $.parseJSON($("#test").text());   //將讀到的檔案轉成Json
 	var _ids = $('#hidden_ids').val().replace(/"/g,'').split(","); 	// turn out to be array 
-	
+	// var _ids = ["103201325","103201281","103208766"]
 	// for (var num in _ids){
 		// alert(_ids[num]);
 	// }
@@ -27,7 +27,8 @@ function secondSearch(idNumbers){
 			  body : {
 				"query": {
 				  "terms": {"_id":idNumbers}
-				}
+				},
+				"size":100  
 			  }
 		}
 	
@@ -51,17 +52,17 @@ function secondSearch(idNumbers){
 			// $('#content').append('<h2>'+title+'</h2>');
 			// $('#content').append('<h6>'+claim+'</h6>');
 			$('#TableView').append( '<tr>\
-							  <td>'+ count +'</td>\
-							  <td>專利編號</td>\
+							  <td >'+ count +'</td>\
+							  <td >專利編號:</td>\
 							  <td>'+ ids +'</td>\
-							  <td>公告/公開日</td>\
+							  <td>公告/公開日:</td>\
 							  <td>2015/11/01</td>\
-							  <td>專利名稱</td>\
+							  <td>專利名稱:</td>\
 							  <td class="tlt">'+title+'</td>\
 							  </tr>\
 							  <tr>\
-							  <td colspan="100" align="left" class="testQQ"><div class="wordslimit">'+ claim +'</div>\
-							  <div class="show less"> 顯示更多</div>\
+							  <td cellspacing="10" colspan="100" align="left" class="testQQ"><div class="wordslimit">'+ claim +'</div>\
+							  <div class="show less">顯示更多</div>\
 							  </td>\
 							  <\tr>\
 							  ');
@@ -84,7 +85,7 @@ function showMore(){
         $(this).text('顯示更多');
     } else {
         $(this).removeClass('less').addClass('more').prev('.wordslimit').removeClass('wordslimit').addClass('wordsnolimit');
-        $(this).text('恢復上一動');
+        $(this).text('收合');
     }
 
 }

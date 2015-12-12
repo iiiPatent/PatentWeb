@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+ 	<head>
+     	<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="../css/normalize.css">
+		<link rel="stylesheet" href="../css/PatentView.css">
+		<link rel="stylesheet" href="../css/animate.css" >
+		<link href='http://fonts.googleapis.com/css?family=Rokkitt' rel='stylesheet' type='text/css'>
+			<!-- <script src="../js/jquery.js"></script> -->
+		<!-- jQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<!-- Elasticsearch -->
+		<script src="../bower_components/elasticsearch/elasticsearch.js"></script>
+		<script src="../js/PatentView.js"></script>
+		<script src="../js/words/jquery.fittext.js"> </script>
+		<script src="../js/words/jquery.lettering.js"> </script>
+		<script src="../js/words/jquery.textillate.js"> </script>
+		<title>專利放大鏡|MAGNIFIER</title>
+		<link rel="icon" href="../img/PatentSearchB_icon.png" type="image/gif" sizes="16x16">
+	</head>
+	<body>
+		<div id="Wrapper">
+			<header>
+				<div id="logo">
+					<a href="../views/PatentMagnifier.html">
+						<img src="../img/PatentSearch_logoB.png" width="501" height="121"alt="Logo">
+					</a>
+				</div>
+			</header>
+			<aside  id="PatentTable">
+				<div>
+					<div id="test">{{applicationNumbers}}</div>
+					<input type = "hidden" name = "age" value={{applicationNumbers}} id="hidden_ids">
+					<input type = "hidden" name = "age" value="雞排" id="hidden_ids">
+					<h1>您的檢索關鍵字為 : <span id = "keyword">{{keyword}}</span></h1>
+					<table border="0" width="300px" id="TableView">
+					</table>
+					<div id = "bigWrapper">
+					</div>
+				</div>
+			</aside>
+			<br>
+			<footer>
+				<div>
+					<p>Copyright &copy; 2015 <strong id="PatentColor">Patent</strong>MAGNIFIER. All rights reserved.</p>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>
+<!--template.html-->
