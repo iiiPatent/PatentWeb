@@ -59,7 +59,7 @@ function Query(){
 			for (var num = 0 ; num < hits[x]["_source"]["words_sort"].length;num++){
 				if (hits[x]['_source']['words_sort'][num][0]==task){
 					var weight_title = parseFloat(hits[x]['_source']['words_sort'][num][1]);
-					title = hits[x]['_source']['words_sort'][num][0] + ",權重:" + parseFloat(Math.round(weight_title*100)/100);
+					title = hits[x]['_source']['words_sort'][num][0] + " , 權重:" + parseFloat(Math.round(weight_title*100)/100);
 					break;					
 				} 
 			}

@@ -2,6 +2,8 @@
     
 var EsConnector = angular.module('EsConnector', ['elasticsearch',"highcharts-ng"]);   // Build Angular Module
 
+var color = ["red","blue","#fa2","green","orange","yellow"];
+
 EsConnector.service('es', function (esFactory) {    // Connection to ElasticSearch
   return esFactory({ host: '10.120.26.16:9200' });
 });
@@ -38,17 +40,28 @@ EsConnector.controller('QueryController', function($rootScope,$scope, es) {
 			otherwords=[] , weighting = [] , keywords = [];
 			
 			for (var x = 0; x<hits.length;x++){		
+			
+				var weight_dict = {} , QQ = [];
 				
 				keywords.push(hits[x]['_source']['keywords']);
 				
 				for(var num = 0 ; num < 10/*[x]['_source']['words_list'].length*/ ;num++){
+					
 					var weight = Math.round(parseFloat(hits[x]['_source']['words_list'][num][1])*1000000)/1000000;
 					otherwords.push(hits[x]['_source']['words_list'][num][0]);	
-					weighting.push(weight);
+					QQ.push(weight);
+					// 存入dict
 				}
 				
+				// Put into series data Structure
+				weight_dict["data"] = QQ;
+				weight_dict["color"] = color[x];
+				weight_dict["name"] = hits[x]['_source']['keywords'];
+				// weight_dict["font"] = hits[x]['_source']['keywords'];
+				
+				weighting.push(weight_dict); 
 			}
-			
+			// { data: [1,2,3,4,5] ,color : "#F00", name:"唉呦不錯喔" }
 		   $scope.words = GetUnique(keywords);
 		   
 		   $rootScope.$broadcast("changeWord" , {"otherwords":otherwords,"weighting":weighting});
@@ -69,21 +82,27 @@ EsConnector.controller('HighChartController', function ($scope) {
 		if(param.otherwords == null){
 			$scope.removeRandomSeries();
 		}
-			$scope.chartConfig.series=[ { data: param.weighting } ];
+			// $scope.chartConfig.series=[ 
+				// { data: param.weighting ,color : "#F00", name:"唉呦不錯喔" },
+				// { data: param.weighting ,color : "#0F0", name:"唉呦不錯喔2.0" },
+
+			// ];
+			
+			$scope.chartConfig.series = param.weighting;
 		
-			$scope.chartConfig.xAxis[0].categories=param.otherwords;
+			$scope.chartConfig.xAxis.categories=param.otherwords;
          
     });
 	
-    $scope.addPoints = function () {
-        var seriesArray = $scope.chartConfig.series
-        var rndIdx = Math.floor(Math.random() * seriesArray.length);
-        seriesArray[rndIdx].data = seriesArray[rndIdx].data.concat([1, 10, 20])
-    };
+    // $scope.addPoints = function () {
+        // var seriesArray = $scope.chartConfig.series
+        // var rndIdx = Math.floor(Math.random() * seriesArray.length);
+        // seriesArray[rndIdx].data = seriesArray[rndIdx].data.concat([1, 10, 20])
+    // };
 
-	$scope.$watch('chartConfig.title.text', function(data) { 
-		 $scope.addSeries(parseInt($scope.chartConfig.title.text));
-	});
+	// $scope.$watch('chartConfig.title.text', function(data) { 
+		 // $scope.addSeries(parseInt($scope.chartConfig.title.text));
+	// });
 	
     // $scope.addSeries = function (num) {
         // var rnd = []
@@ -118,19 +137,35 @@ EsConnector.controller('HighChartController', function ($scope) {
         options: {
             chart: {
                 type: 'bar'  //pie可玩玩
-            }
+            },
+			 tooltip: {
+			  style: {
+				  paddingTop:-10,
+				  paddingLeft: 10,
+				  fontWeight: 'bold',
+				  fontSize: "30px"
+				}
+			}
         },
         series: [],
-		color : "#F00",
         title: {
-            text: '歡迎搜尋!!'
+            text: '歡迎搜尋!!',
+			// labels: {
+                // style: {
+                    // color: 'black',
+                    // fontSize:'30px'
+                // }
+            // }
+			// style : { "color": "#333333", "fontSize": "18px" }
         }, 
 		// xAxis: [],
-		xAxis: [{     // 改左邊 title;
+		xAxis: {     // 改左邊 title;
 			categories: []//['old bar title', 'old bar title 2 ','第三個阿阿阿','第4個QQ']
-		}],
+			//fontSize: 'px'
+		},
 
-        loading: false
+        loading: false,
+		
     }
 
 });

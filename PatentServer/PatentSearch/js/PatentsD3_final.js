@@ -96,6 +96,12 @@ function update() {
       // .attr("r", function(d) { return Math.sqrt(d.size) / 10 || 4.5; })
       .style("fill",color)
       .on("click", click)
+	  .on("mouseover", function(d){
+			d3.select(labels[0][d.index]).style("visibility","visible")
+	  })
+	  .on("mouseout", function(d) {
+			d3.select(labels[0][d.index]).style("visibility","hidden")
+	  })
 	  .on("dblclick",function(d){ 
 	   // 跳轉成功!!
 	   
@@ -116,21 +122,27 @@ function update() {
       .call(force.drag);
 	  
  	  
-  //  Show labels
-  // labels = svg.selectAll("text")                                      
-		 			// .data(nodes)
+   // Show labels
+  labels = svg.selectAll("text")                                      
+		 			.data(nodes)
 		 
     // Exit any old labels.
-  // labels.exit().remove();
+  labels.exit().remove();
 
   // Enter any new labels.
  
-  // labels.enter()
-		// .append("text")
-		// .attr({"x":function(d){return d.x+20;},
-		 	   // "y":function(d){return d.y;}})
-		// .text(function(d){return d.name;})
-		// .call(force.drag);
+  labels.enter()
+		.append("text")
+		.attr({"x":function(d){return d.x+20;},
+		 	   "y":function(d){return d.y+10;}})
+		.attr("vector-effect", "non-scaling-stroke")
+		.style({
+			"visibility":"hidden",
+			"font":"bold 48px 微軟正黑體",
+			"fill":"#C00"  //調顏色
+		})
+		.text(function(d){return d.name;})
+		.call(force.drag);
 		
 }
 
@@ -143,8 +155,8 @@ function tick() {
   node.attr("cx", function(d) { return d.x; })
       .attr("cy", function(d) { return d.y; });
 	  
-  // labels.attr("x", function(d) { return d.x+20; })        // **NEW**
-        // .attr("y", function(d) { return d.y; }); 
+  labels.attr("x", function(d) { return d.x+20; })        // **NEW**
+        .attr("y", function(d) { return d.y; }); 
 	  
 
 }
