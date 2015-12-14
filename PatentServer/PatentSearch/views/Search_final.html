@@ -58,8 +58,8 @@
 						</div>	
 					</div>
 					<div id="inputsearch" ng-controller="QueryController">
-						<p>主要關鍵字: <input ng-model="name" type="text" name="mainWord" placeholder="ex:輸入您的關鍵字" id="mainWord" /></p>
-	  					<p>相關關鍵字:</p><span ng-repeat="items in words" id="Words">{{items}},</span>
+						<div>主要關鍵字: <input ng-model="name" type="text" name="mainWord" placeholder="ex:輸入您的關鍵字" id="mainWord" /></div>
+	  					<div>相關關鍵字:</div><span ng-repeat="items in words" id="Words">{{items}},</span>
 					</div>
 	  				<div id="SearchLink">
 					<!-- 對我的:"http://10.120.30.18:8124/PatentChartOffical.html" -->

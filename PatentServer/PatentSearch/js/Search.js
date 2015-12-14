@@ -79,9 +79,9 @@ EsConnector.controller('HighChartController', function ($scope) {
 	
 	
 	$scope.$on("changeWord", function (event, param) {
-		if(param.otherwords == null){
-			$scope.removeRandomSeries();
-		}
+		// if(param.otherwords == null){
+			// $scope.removeRandomSeries();
+		// }
 			// $scope.chartConfig.series=[ 
 				// { data: param.weighting ,color : "#F00", name:"唉呦不錯喔" },
 				// { data: param.weighting ,color : "#0F0", name:"唉呦不錯喔2.0" },
@@ -94,40 +94,6 @@ EsConnector.controller('HighChartController', function ($scope) {
          
     });
 	
-    // $scope.addPoints = function () {
-        // var seriesArray = $scope.chartConfig.series
-        // var rndIdx = Math.floor(Math.random() * seriesArray.length);
-        // seriesArray[rndIdx].data = seriesArray[rndIdx].data.concat([1, 10, 20])
-    // };
-
-	// $scope.$watch('chartConfig.title.text', function(data) { 
-		 // $scope.addSeries(parseInt($scope.chartConfig.title.text));
-	// });
-	
-    // $scope.addSeries = function (num) {
-        // var rnd = []
-        // for (var i = 0; i < num; i++) {
-            // rnd.push(Math.floor(Math.random() * 20) + 1)
-        // }
-        // $scope.chartConfig.series.push({
-            // data: rnd
-        // })
-    // }
-
-    // $scope.removeRandomSeries = function () {
-        // var seriesArray = $scope.chartConfig.series;
-		// seriesArray[0].remove();
-	
-    // }
-
-    // $scope.swapChartType = function () {
-        // if (this.chartConfig.options.chart.type === 'line') {
-            // this.chartConfig.options.chart.type = 'bar'
-        // } else {
-            // this.chartConfig.options.chart.type = 'line'
-            // this.chartConfig.options.chart.zoomType = 'x'
-        // }
-    // }
 
     $scope.toggleLoading = function () {
         this.chartConfig.loading = !this.chartConfig.loading
@@ -135,36 +101,55 @@ EsConnector.controller('HighChartController', function ($scope) {
 
     $scope.chartConfig = {
         options: {
-            chart: {
-                type: 'bar'  //pie可玩玩
+            chart : {
+                type: 'bar'  //pie可玩玩2
             },
-			 tooltip: {
-			  style: {
-				  paddingTop:-10,
-				  paddingLeft: 10,
-				  fontWeight: 'bold',
-				  fontSize: "30px"
+			
+			// tooltip conf
+			tooltip : {    
+				shared:true,
+				// Header Conf
+				headerFormat: '<span style="font-size: 25px;color:#06F;margin-top:5px;">{point.key}</span><br/>',
+				// pointer Conf
+				pointFormat: '<span style="color:{point.color};font-size:20px;">\u25CF</span> {series.name}: <b style="font-size:20px;">{point.y}</b><br>',
+
+			},
+			
+			// button labels conf
+			legend : {    
+				itemStyle: {
+					fontWeight: 'bold',
+					fontSize: '25px'
 				}
 			}
         },
         series: [],
         title: {
             text: '歡迎搜尋!!',
-			// labels: {
-                // style: {
-                    // color: 'black',
-                    // fontSize:'30px'
-                // }
-            // }
-			// style : { "color": "#333333", "fontSize": "18px" }
+			style: {
+                    color: '#0066FF',
+                    fontSize: '25px',
+					marginTop:'10px'
+            } 
         }, 
 		// xAxis: [],
 		xAxis: {     // 改左邊 title;
-			categories: []//['old bar title', 'old bar title 2 ','第三個阿阿阿','第4個QQ']
-			//fontSize: 'px'
+			categories: [],
+			labels:{
+				style:{
+					color:"black",
+					fontSize:"25px"
+				}
+			}
+		
 		},
 
         loading: false,
+		
+		// Change Highchart Size
+		"size": {
+			"height": "500"
+		}
 		
     }
 

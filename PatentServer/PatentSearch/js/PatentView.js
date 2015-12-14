@@ -28,7 +28,7 @@ function secondSearch(idNumbers){
 				"query": {
 				  "terms": {"_id":idNumbers}
 				},
-				"size":100  
+				"size":150  
 			  }
 		}
 	
@@ -47,18 +47,31 @@ function secondSearch(idNumbers){
 			count +=1 ;
 			var ids = QQ[num]['_id'];
 			var title = QQ[num]['_source']['title'];
-			var claim = QQ[num]['_source']['claim'];
-			// $('#content').append('<h1>'+ids+'</h1>');
+			var claim = QQ[num]['_source']['abstract'];
+			// var claim = QQ[num]['_source']['claim'];
+			var DIM = QQ[num]['_source']['DIM'];
+			var date_origin = QQ[num]['_source']['filing-date'];
+			// alert(date_origin);
+			
+			if (date_origin.length ==14){
+				var date = date_origin.substring(0,4)+"/"+ date_origin.substring(4,6)+"/"+ date_origin.substring(6,8);
+			} else if (date_origin.length == 7){
+				var date = (parseInt(date_origin.substring(0,3))+1911)+"/"+ date_origin.substring(3,5)+"/"+ date_origin.substring(5,7);
+
+			}
+			// $('#content').append('<h1>'+ids+'</h1>'); "filing-date": "20131218150204",
 			// $('#content').append('<h2>'+title+'</h2>');
 			// $('#content').append('<h6>'+claim+'</h6>');
 			$('#TableView').append( '<tr>\
-							  <td >'+ count +'</td>\
-							  <td >專利編號:</td>\
+							  <td style="text-align:center;">'+ count +'</td>\
+							  <td style="width:12%;text-align:center;">專利編號:</td>\
 							  <td>'+ ids +'</td>\
-							  <td>公告/公開日:</td>\
-							  <td>2015/11/01</td>\
-							  <td>專利名稱:</td>\
-							  <td class="tlt">'+title+'</td>\
+							  <td style="width:17%;text-align:center;">公告/公開日:</td>\
+							  <td style="text-align:center;" >'+ date +'</td>\
+							  <td style="width:12%;text-align:center;">專利型別</td>\
+							  <td>'+ DIM +'</td>\
+							  <td style="width:12%;text-align:center;">專利名稱:</td>\
+							  <td class="tlt" style="text-align:center;" >'+title+'</td>\
 							  </tr>\
 							  <tr>\
 							  <td cellspacing="10" colspan="100" align="left" class="testQQ"><div class="wordslimit">'+ claim +'</div>\

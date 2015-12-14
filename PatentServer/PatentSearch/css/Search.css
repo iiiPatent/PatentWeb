@@ -71,8 +71,10 @@ body{
   border-style:none;
   display: inline-block;
   position: fixed;
-  top:83%;
-  left: 50%;
+  /*top:83%;
+  left: 90%;*/
+  top:55%;
+  right: 1%;
   width: 80px;
   height: 80px;
   background: url(../img/PatentSearchB.png);
@@ -86,7 +88,7 @@ body{
 }
 #Words{
   text-align: center;
-  font:bold 20px Tahoma;
+  font:bold 25px 微軟正黑體;
 }
 #PatentColor{
   color:#4D9CD0;
@@ -103,3 +105,4 @@ footer {
   background: #EEEEEF;
   zindex:99;
 }
+

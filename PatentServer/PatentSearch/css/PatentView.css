@@ -33,7 +33,7 @@ body{
   display: inline-block;
   vertical-align: middle;
   text-align:left;
-  width: 66%;
+  width: 80%;
   /*background: #111;*/
 }
 #PatentColor{
@@ -85,16 +85,20 @@ footer {
 	text-overflow:ellipsis;
 	white-space:nowrap;
 	width:800px;
-  color:#40210F;
-  font-size: .95em;
-  line-height: 1.4em;
-  letter-spacing: 0.3em;
+	color:#40210F;
+	font-size: .95em;
+	line-height: 1.4em;
+	letter-spacing: 0.3em;
 }
 .wordsnolimit,.testQQ{
-  width:100%;
+	width:100%;
 	color:#40210F;
-  font-size: .95em;
-  line-height: 1.4em;
-  letter-spacing: 0.3em;
-  text-align: justify;
+	font-size: .95em;
+	line-height: 1.4em;
+	letter-spacing: 0.3em;
+	text-align: justify;
+}
+
+#keyword{
+	font: bold 40px 微軟正黑體;
 }
